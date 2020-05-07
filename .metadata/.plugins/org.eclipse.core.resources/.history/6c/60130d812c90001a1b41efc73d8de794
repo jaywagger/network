@@ -1,0 +1,5 @@
+package chat.step06;
+//3. =========다중 채팅을 구현하기 위해서 클라이언트에 정보를 서버에 저장
+public class User {
+
+}

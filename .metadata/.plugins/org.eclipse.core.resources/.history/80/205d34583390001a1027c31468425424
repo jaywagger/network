@@ -1,0 +1,57 @@
+package chat.step06;
+//3. =========다중 채팅을 구현하기 위해서 클라이언트에 정보를 서버에 저장 
+//============서버에서 모든 클라이언트의 정보를 갖고 있어야 한다.
+//============클라이언트의 정보, 클라이언트의 처리를 표현한 User클래스를 작성
+//============클라이언트와 서버가 통신할 수 있는 객체
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class User extends Thread{ 
+	//Thread를 extends한 이유는...
+	//서버는 클라이언트가 들어오늘 걸 다 받아야 한다.
+	
+	//ChatServerView에서 넘겨받을 데이터
+	Socket client;
+	ChatServerView serverView;
+	
+	 Socket socket;
+	 InputStream is;
+	 InputStreamReader ir;
+	 BufferedReader br;
+	 
+	 OutputStream os;
+	 PrintWriter pw;
+	
+	//생성자
+	public User() {
+		
+	}
+	public User(Socket client, ChatServerView serverView) {
+		super();
+		this.client = client;
+		this.serverView = serverView;
+		ioWork();
+	}
+	public void ioWork() { //처음 접속했을 때 한 번 실행되는 메소드
+		try {
+			is = client.getInputStream();
+			ir = new InputStreamReader(is);
+			br = new BufferedReader(ir);
+			
+			os = socket.getOutputStream();
+			pw = new PrintWriter(os,true);
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+
+}
