@@ -23,6 +23,8 @@ public class ChatServerView extends JFrame {
 	 JButton btnstop;
 	 ServerSocket server;
 	 Socket socket;
+	 
+	 
 	 //1. ===========클라이언트들의 정보를 저장할 변수 선언===============
 	 Vector<User> userlist = new Vector<User>();	 
 	 //=========================================================
